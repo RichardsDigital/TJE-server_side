@@ -6,8 +6,6 @@ const createTable = require('./createTable');
 
 const port = 5000;
 
-let displayTable = '';
-
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -17,11 +15,8 @@ app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
 
-app.get('/', (req, res) => {
-    res.send(displayTable);
-});
-
 app.post('/formData', (req, res) => {
+    console.log(req.body);
     const table = createTable(req.body);
-    displayTable = table;
+    console.log(table);
 });
